@@ -9,6 +9,14 @@
 	<name>MATSim model for Melbourne</name>
 	<description>An open MATSim model for melbourne</description>
 
+	<properties>
+		<!--stable release-->
+		<matsim.version>11.0</matsim.version>
+
+		<!--nightly release-->
+		<!--<matsim.version>12.0-SNAPSHOT</matsim.version>-->
+	</properties>
+
 	<repositories>
 		<!-- Repository for MATSim releases (MATSim is not on Maven central) -->
 		<repository>
@@ -55,18 +63,18 @@
 		<dependency>
 			<groupId>org.matsim</groupId>
 			<artifactId>matsim</artifactId>
-			<version>0.10.0</version>
+			<version>${matsim.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.matsim.contrib</groupId>
 			<artifactId>emissions</artifactId>
-			<version>0.10.0</version>
+			<version>${matsim.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.matsim.contrib</groupId>
 			<artifactId>noise</artifactId>
-			<version>0.10.0</version>
+			<version>${matsim.version}</version>
 		</dependency>
 
 		<!-- Include the JUnit testing library -->
