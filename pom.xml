@@ -11,10 +11,10 @@
 
 	<properties>
 		<!--stable release-->
-		<matsim.version>11.0</matsim.version>
+		<!--<matsim.version>11.0</matsim.version>-->
 
 		<!--nightly release-->
-		<!--<matsim.version>12.0-SNAPSHOT</matsim.version>-->
+		<matsim.version>12.0-SNAPSHOT</matsim.version>
 	</properties>
 
 	<repositories>
@@ -65,7 +65,7 @@
 			<artifactId>matsim</artifactId>
 			<version>${matsim.version}</version>
 		</dependency>
-		
+
 		<!-- MATSim extensions/contribs -->
 		<dependency>
 			<groupId>org.matsim.contrib</groupId>
