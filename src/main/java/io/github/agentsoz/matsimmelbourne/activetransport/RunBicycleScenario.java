@@ -71,12 +71,20 @@ public class RunBicycleScenario {
         System.out.println("cleaning the network");
 
         Set<String> mode_Set = new HashSet<String>();
-        //mode_Set.add("car");
-        mode_Set.add("bicycle");
+        mode_Set.add("car");
+        //mode_Set.add("bicycle");
         //new MultimodalNetworkCleaner(network).run(Collections.singleton(TransportMode.car));
         new MultimodalNetworkCleaner(network).run(mode_Set);
         //new NetworkCleaner().run(network);
-        new NetworkWriter(network).write("./cleanedNetwork_single.xml.gz");
+        new NetworkWriter(network).write("./cleanedNetwork_car.xml.gz");
+
+        Set<String> mode_Set2 = new HashSet<String>();
+        mode_Set2.add("bicycle");
+        //new MultimodalNetworkCleaner(network).run(Collections.singleton(TransportMode.car));
+        new MultimodalNetworkCleaner(network).run(mode_Set2);
+        //new NetworkCleaner().run(network);
+        new NetworkWriter(network).write("./cleanedNetwork_carBicycle.xml.gz");
+
     }
     private static void fillConfigWithBicycleStandardValues(Config config){
 
