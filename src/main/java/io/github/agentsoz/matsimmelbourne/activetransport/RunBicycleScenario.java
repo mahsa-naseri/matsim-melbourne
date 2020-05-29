@@ -7,7 +7,7 @@ import org.matsim.api.core.v01.TransportMode;
 import org.matsim.api.core.v01.network.Network;
 import org.matsim.api.core.v01.network.NetworkWriter;
 import org.matsim.contrib.bicycle.BicycleConfigGroup;
-import org.matsim.contrib.bicycle.Bicycles;
+//import org.matsim.contrib.bicycle.Bicycles;
 import org.matsim.core.config.Config;
 import org.matsim.core.config.ConfigUtils;
 import org.matsim.core.config.groups.QSimConfigGroup;
@@ -76,25 +76,25 @@ public class RunBicycleScenario {
         //new MultimodalNetworkCleaner(network).run(Collections.singleton(TransportMode.car));
         new MultimodalNetworkCleaner(network).run(mode_Set);
         //new NetworkCleaner().run(network);
-        new NetworkWriter(network).write("./cleanedNetwork_car.xml.gz");
+        new NetworkWriter(network).write("./roadRMIT_ptIVABM_cleanedNetwork_car.xml.gz");
 
         Set<String> mode_Set2 = new HashSet<String>();
         mode_Set2.add("bicycle");
         //new MultimodalNetworkCleaner(network).run(Collections.singleton(TransportMode.car));
         new MultimodalNetworkCleaner(network).run(mode_Set2);
         //new NetworkCleaner().run(network);
-        new NetworkWriter(network).write("./cleanedNetwork_carBicycle.xml.gz");
+        new NetworkWriter(network).write("./roadRMIT_ptIVABM_cleanedNetwork_carBicycle.xml.gz");
 
     }
     private static void fillConfigWithBicycleStandardValues(Config config){
 
-        config.controler().setWriteEventsInterval(1);
+        //config.controler().setWriteEventsInterval(1);
 
         BicycleConfigGroup bicycleConfigGroup = (BicycleConfigGroup) config.getModules().get(BicycleConfigGroup.GROUP_NAME);
         bicycleConfigGroup.setMarginalUtilityOfInfrastructure_m(-0.02);
         bicycleConfigGroup.setMarginalUtilityOfComfort_m(-0.0002);
         bicycleConfigGroup.setMarginalUtilityOfGradient_m_100m(-0.02);
-        bicycleConfigGroup.setMaxBicycleSpeedForRouting(4.16666666);
+        //bicycleConfigGroup.setMaxBicycleSpeedForRouting(4.16666666);
 
         List<String> mainModeList = new ArrayList<>();
         mainModeList.add("bicycle");
@@ -116,7 +116,7 @@ public class RunBicycleScenario {
     }
 
     public void run(){
-        Bicycles.addAsOverridingModule(controler);
+        //Bicycles.addAsOverridingModule(controler);
         controler.run();
     }
 }
