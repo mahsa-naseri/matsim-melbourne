@@ -53,7 +53,7 @@ public class RunBicycleScenario {
         config.controler().setOverwriteFileSetting(OutputDirectoryHierarchy.OverwriteFileSetting.deleteDirectoryIfExists);
         //config.plansCalcRoute().setInsertingAccessEgressWalk(true);
         //config.plansCalcRoute().clearModeRoutingParams(true);
-        fillConfigWithBicycleStandardValues(config);
+        fillConfigWithBicycleStandardValues(config, true);
 
         this.scenario = ScenarioUtils.loadScenario(config);
         createVehiclesForScenario(scenario);
@@ -76,17 +76,17 @@ public class RunBicycleScenario {
         //new MultimodalNetworkCleaner(network).run(Collections.singleton(TransportMode.car));
         new MultimodalNetworkCleaner(network).run(mode_Set);
         //new NetworkCleaner().run(network);
-        new NetworkWriter(network).write("./roadRMIT_ptIVABM_cleanedNetwork_car.xml.gz");
+        new NetworkWriter(network).write("./roadRMIT_noIVABM_cleanedNetwork_car_1.6.xml.gz");
 
         Set<String> mode_Set2 = new HashSet<String>();
         mode_Set2.add("bicycle");
         //new MultimodalNetworkCleaner(network).run(Collections.singleton(TransportMode.car));
         new MultimodalNetworkCleaner(network).run(mode_Set2);
         //new NetworkCleaner().run(network);
-        new NetworkWriter(network).write("./roadRMIT_ptIVABM_cleanedNetwork_carBicycle.xml.gz");
+        new NetworkWriter(network).write("./roadRMIT_noIVABM_cleanedNetwork_carBicycle_1.6.xml.gz");
 
     }
-    private static void fillConfigWithBicycleStandardValues(Config config){
+    private static void fillConfigWithBicycleStandardValues(Config config, boolean considerMotorizedInteraction){
 
         //config.controler().setWriteEventsInterval(1);
 
@@ -101,6 +101,10 @@ public class RunBicycleScenario {
         mainModeList.add(TransportMode.car);
         config.qsim().setMainModes(mainModeList);
         config.plansCalcRoute().setNetworkModes(mainModeList);
+
+        if (considerMotorizedInteraction) {
+            bicycleConfigGroup.setMotorizedInteraction(considerMotorizedInteraction);
+        }
     }
 
     private static void createVehiclesForScenario(Scenario scenario){
